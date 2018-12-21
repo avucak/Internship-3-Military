@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace OOP
 {
@@ -6,7 +9,6 @@ namespace OOP
     {
         static void Main(string[] args)
         {
-            
             var pathLength = 0;
             var pathLength2 = 0;
             var weight = 0.0;
@@ -117,6 +119,22 @@ namespace OOP
             warship.Swim(warship.CalculatePath());
             amfibia.Move(amfibia.CalculatePath());
             amfibia.Swim(amfibia.CalculatePathSea());
+            Console.WriteLine("Podaci za tenk: "+tank.Print());
+            Console.WriteLine("Podaci za brod: " + warship.Print());
+            Console.WriteLine("Podaci za amfibiju: " + amfibia.Print());
+            var vehiclesAndFuelConsumed=new Dictionary<string,int>()
+                {{"tenk",tank.FuelConsumed()},
+                 { "brod",warship.FuelConsumed()},
+                 { "amfibija",amfibia.FuelConsumed()}
+                };
+            var minimum= vehiclesAndFuelConsumed.Values.Min();
+            Console.WriteLine("Koje se vozilo treba odabrati, jer je potrošilo najmanje goriva: ");
+            foreach (var pair in vehiclesAndFuelConsumed)
+            {
+             if(pair.Value==minimum)
+                      Console.WriteLine(pair.Key);               
+            }
+            
         }
     }
 }

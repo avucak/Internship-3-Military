@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOP
 {
-    public sealed class NumberOfSoldiers
+    public static class NumberOfSoldiers
     {
         public static int Number { get; set; }
         

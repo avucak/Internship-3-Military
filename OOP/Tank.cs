@@ -17,12 +17,12 @@ namespace OOP
 
         public override string Print()
         {
-            return base.Print() + $"Potrošeno gorivo";
+            return base.Print() + $" | Potrošeno gorivo:{FuelConsumed()}";
         }
 
         public override int CalculatePath()
         {
-            FinalPath = PathLength * ((NumberOfSoldiers.Number / Capacity - 1) * 2 + 1);
+            FinalPath = PathLength * (((int)Math.Ceiling((double)NumberOfSoldiers.Number / Capacity) - 1) * 2 + 1);
             return FinalPath;
         }
 

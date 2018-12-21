@@ -20,18 +20,18 @@ namespace OOP
 
         public override string Print()
         {
-            return base.Print() + $"Potrošeno gorivo";
+            return base.Print() + $" | Potrošeno gorivo:{FuelConsumed()}";
         }
 
         public override int CalculatePath()
         {
-            FinalPathLand = PathLengthLand * ((NumberOfSoldiers.Number / Capacity - 1) * 2 + 1);
+            FinalPathLand = PathLengthLand * (((int)Math.Ceiling((double)NumberOfSoldiers.Number / Capacity) - 1) * 2 + 1);
             return FinalPathLand;
         }
 
         public int CalculatePathSea()
         {
-            FinalPathSea = PathLengthSea * ((NumberOfSoldiers.Number / Capacity - 1) * 2 + 1);
+            FinalPathSea = PathLengthSea * (((int)Math.Ceiling((double)NumberOfSoldiers.Number / Capacity) - 1) * 2 + 1);
             return FinalPathSea;
         }
 
