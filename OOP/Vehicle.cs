@@ -26,5 +26,6 @@ namespace OOP
             return
                 $"Id: {Id} | Težina:{Weight} | Brzina:{AverageSpeed} | Potrošnja: {FuelConsumption} | Kapcitet: {Capacity}";
         }
+        
     }
 }

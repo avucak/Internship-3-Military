@@ -6,10 +6,13 @@ namespace OOP
 {
     public class Amfibia:Vehicle
     {
-        public Amfibia(string id, double weight, double averageSpeed)
+        public double PathLengthLand { get; set; }
+        public double PathLengthSea { get; set; }
+        public Amfibia(string id, double weight, double averageSpeed,double pathLengthLand, double pathLengthSea)
             : base(id, weight, averageSpeed, 70, 20)
         {
-
+            PathLengthLand = pathLengthLand;
+            PathLengthSea = pathLengthSea;
         }
 
         public override string Print()
