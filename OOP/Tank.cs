@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOP
 {
-    public class Tank:Vehicle, IDriveable
+    public class Tank:Vehicle, IDriveable,IFuelConsummable
     {
         public int PathLength { get; set; }
         public int FinalPath { get; set; }
@@ -20,9 +20,10 @@ namespace OOP
             return base.Print() + $"Potrošeno gorivo";
         }
 
-        public override void CalculatePath()
+        public override int CalculatePath()
         {
-            FinalPath = PathLength * ((NumberOfSoldiers.Number/Capacity-1)*2+1);
+            FinalPath = PathLength * ((NumberOfSoldiers.Number / Capacity - 1) * 2 + 1);
+            return FinalPath;
         }
 
         public void Move(int distance)
@@ -40,6 +41,10 @@ namespace OOP
             }
 
             FinalPath = FinalPath + distanceToAdd;
+        }
+        public int FuelConsumed()
+        {
+            return FinalPath * FuelConsumption;
         }
     }
 }

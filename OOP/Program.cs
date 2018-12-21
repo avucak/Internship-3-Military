@@ -113,6 +113,10 @@ namespace OOP
             } while (!flag);
 
             NumberOfSoldiers.Number = numberOfSoldiers;
+            tank.Move(tank.CalculatePath());
+            warship.Swim(warship.CalculatePath());
+            amfibia.Move(amfibia.CalculatePath());
+            amfibia.Swim(amfibia.CalculatePathSea());
         }
     }
 }

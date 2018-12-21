@@ -4,11 +4,12 @@ using System.Text;
 
 namespace OOP
 {
-    public class Amfibia:Vehicle, IDriveable,ISwimmable
+    public class Amfibia:Vehicle, IDriveable,ISwimmable,IFuelConsummable
     {
         public int PathLengthLand { get; set; }
         public int PathLengthSea { get; set; }
-        public int FinalPath { get; set; }
+        public int FinalPathLand { get; set; }
+        public int FinalPathSea { get; set; }
 
         public Amfibia(string id, double weight, double averageSpeed,int pathLengthLand, int pathLengthSea)
             : base(id, weight, averageSpeed, 70, 20)
@@ -22,10 +23,18 @@ namespace OOP
             return base.Print() + $"Potrošeno gorivo";
         }
 
-        public override void CalculatePath()
+        public override int CalculatePath()
         {
-            FinalPath = (PathLengthLand+PathLengthSea) * ((NumberOfSoldiers.Number / Capacity - 1) * 2 + 1);
+            FinalPathLand = PathLengthLand * ((NumberOfSoldiers.Number / Capacity - 1) * 2 + 1);
+            return FinalPathLand;
         }
+
+        public int CalculatePathSea()
+        {
+            FinalPathSea = PathLengthSea * ((NumberOfSoldiers.Number / Capacity - 1) * 2 + 1);
+            return FinalPathSea;
+        }
+
         public void Move(int distance)
         {
             var distanceToAdd = 0;
@@ -40,7 +49,7 @@ namespace OOP
                 distance -= 10;
             }
 
-            FinalPath = FinalPath + distanceToAdd;
+            FinalPathLand = FinalPathLand + distanceToAdd;
         }
         public void Swim(int distance)
         {
@@ -57,7 +66,11 @@ namespace OOP
                 time -= 10;
             }
 
-            FinalPath = FinalPath + distanceToAdd;
+            FinalPathSea = FinalPathSea + distanceToAdd;
+        }
+        public int FuelConsumed()
+        {
+            return (FinalPathLand+FinalPathSea) * FuelConsumption;
         }
     }
 }
