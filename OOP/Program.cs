@@ -17,7 +17,7 @@ namespace OOP
             //unos tenka
             do
             {
-                Console.WriteLine("Unesite duljinu puta za tenk:");
+                Console.WriteLine("Unesite duljinu puta za tenk (u kilometrima):");
                 flag = int.TryParse(Console.ReadLine(), out pathLength);
             } while (!flag);
 
@@ -34,7 +34,7 @@ namespace OOP
             flag = false;
             do
             {
-                Console.WriteLine("Unesite prosječnu brzinu za tenk:");
+                Console.WriteLine("Unesite prosječnu brzinu za tenk(km/h):");
                 flag = double.TryParse(Console.ReadLine(), out averageSpeed);
             } while (!flag);
             Tank tank=new Tank(id,weight,averageSpeed,pathLength);

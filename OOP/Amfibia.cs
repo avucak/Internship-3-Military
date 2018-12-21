@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOP
 {
-    public class Amfibia:Vehicle, IDriveable
+    public class Amfibia:Vehicle, IDriveable,ISwimmable
     {
         public int PathLengthLand { get; set; }
         public int PathLengthSea { get; set; }
@@ -38,6 +38,23 @@ namespace OOP
                 }
 
                 distance -= 10;
+            }
+
+            FinalPath = FinalPath + distanceToAdd;
+        }
+        public void Swim(int distance)
+        {
+            var distanceToAdd = 0;
+            var time = (distance / AverageSpeed) * 60;
+            while (time >= 10)
+            {
+                if (random.Next(100) < 50)
+                {
+                    distanceToAdd += 3;
+                    time += (3 / AverageSpeed) * 60;
+                }
+
+                time -= 10;
             }
 
             FinalPath = FinalPath + distanceToAdd;
