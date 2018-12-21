@@ -4,8 +4,9 @@ using System.Text;
 
 namespace OOP
 {
-    public interface IDriveable
+    public sealed class NumberOfSoldiers
     {
-        void Move(int distance);
+        public static int Number { get; set; }
+        
     }
 }

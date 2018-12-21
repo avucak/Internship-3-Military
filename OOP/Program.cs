@@ -7,8 +7,8 @@ namespace OOP
         static void Main(string[] args)
         {
             
-            var pathLength = 0.0;
-            var pathLength2 = 0.0;
+            var pathLength = 0;
+            var pathLength2 = 0;
             var weight = 0.0;
             var averageSpeed = 0.0;
             var id = "";
@@ -18,7 +18,7 @@ namespace OOP
             do
             {
                 Console.WriteLine("Unesite duljinu puta za tenk:");
-                flag = double.TryParse(Console.ReadLine(), out pathLength);
+                flag = int.TryParse(Console.ReadLine(), out pathLength);
             } while (!flag);
 
             flag = false;
@@ -44,7 +44,7 @@ namespace OOP
             do
             {
                 Console.WriteLine("Unesite duljinu puta za brod:");
-                flag = double.TryParse(Console.ReadLine(), out pathLength);
+                flag = int.TryParse(Console.ReadLine(), out pathLength);
             } while (!flag);
             flag = false;
 
@@ -72,14 +72,14 @@ namespace OOP
                 do
                 {
                     Console.WriteLine("Unesite duljinu kopnenog puta za amfibiju:");
-                    flag = double.TryParse(Console.ReadLine(), out pathLength);
+                    flag = int.TryParse(Console.ReadLine(), out pathLength);
                 } while (!flag);
 
                 flag = false;
                 do
                 {
                     Console.WriteLine("Unesite duljinu morskog puta za amfibiju:");
-                    flag = double.TryParse(Console.ReadLine(), out pathLength2);
+                    flag = int.TryParse(Console.ReadLine(), out pathLength2);
                 } while (!flag);
                 if (pathLength + pathLength2 > warship.PathLength || pathLength + pathLength2 > tank.PathLength)
                 {
@@ -111,6 +111,8 @@ namespace OOP
                 Console.WriteLine("Unesite broj vojnika koje treba prevesti:");
                 flag = int.TryParse(Console.ReadLine(), out numberOfSoldiers);
             } while (!flag);
+
+            NumberOfSoldiers.Number = numberOfSoldiers;
         }
     }
 }

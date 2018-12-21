@@ -6,6 +6,6 @@ namespace OOP
 {
     public interface ISwimmable
     {
-        int Swim(int distance);
+        void Swim(int distance);
     }
 }

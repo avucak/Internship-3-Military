@@ -7,6 +7,7 @@ namespace OOP
 {
      public abstract class Vehicle
     {
+        public Random random = new Random();
         public string Id { get; set; }
         public double Weight { get; set; }
         public double AverageSpeed { get; set; }
@@ -26,6 +27,10 @@ namespace OOP
             return
                 $"Id: {Id} | Težina:{Weight} | Brzina:{AverageSpeed} | Potrošnja: {FuelConsumption} | Kapcitet: {Capacity}";
         }
-        
+
+        public virtual void CalculatePath()
+        {
+
+        }
     }
 }
