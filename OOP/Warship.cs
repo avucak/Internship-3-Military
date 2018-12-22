@@ -8,9 +8,11 @@ namespace OOP
     {
         public int PathLength { get; set; }
         public int FinalPath { get; set; }
-        public Warship(string id, double weight, double averageSpeed,int pathLength)
-            : base(id, weight, averageSpeed, 200, 50)
+        public static int Number = 0;
+        public Warship( int pathLength)
+            : base("warship "+ (Number + 1).ToString(), 200000, 65, 200, 50)
         {
+            Number++;
             PathLength = pathLength;
         }
        
@@ -18,9 +20,9 @@ namespace OOP
         {
             return base.Print() + $" | Potrošeno gorivo:{FuelConsumed()}";
         }
-        public override int CalculatePath()
+        public override int CalculatePath(int numberOfSoldiers)
         {
-            FinalPath = PathLength * (((int) Math.Ceiling((double)NumberOfSoldiers.Number / Capacity) - 1) * 2 + 1);
+            FinalPath = PathLength * (((int) Math.Ceiling((double)numberOfSoldiers / Capacity) - 1) * 2 + 1);
             return FinalPath;
         }
 
@@ -42,9 +44,9 @@ namespace OOP
             FinalPath = FinalPath + distanceToAdd;
         }
 
-        public int FuelConsumed()
+        public double FuelConsumed()
         {
-            return FinalPath*FuelConsumption;
+            return (double)(FinalPath*FuelConsumption/100);
         }
     }
 }

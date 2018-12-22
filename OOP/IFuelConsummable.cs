@@ -6,6 +6,6 @@ namespace OOP
 {
     public interface IFuelConsummable
     {
-        int FuelConsumed();
+        double FuelConsumed();
     }
 }

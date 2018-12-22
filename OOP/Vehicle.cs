@@ -9,10 +9,10 @@ namespace OOP
     {
         public Random random = new Random();
         public string Id { get; set; }
-        public double Weight { get; set; }
-        public double AverageSpeed { get; set; }
-        public int FuelConsumption { get; set; }
-        public int Capacity { get; set; }
+        public double Weight { get; }
+        public double AverageSpeed { get; }
+        public int FuelConsumption { get; }
+        public int Capacity { get; }
 
         public Vehicle(string id, double weight, double averageSpeed, int fuelConsumption, int capacity)
         {
@@ -28,7 +28,7 @@ namespace OOP
                 $"Id: {Id} | Težina:{Weight} | Brzina:{AverageSpeed} | Potrošnja: {FuelConsumption} | Kapcitet: {Capacity}";
         }
 
-        public virtual int CalculatePath()
+        public virtual int CalculatePath(int number)
         {
             return 0;
         }

@@ -9,9 +9,12 @@ namespace OOP
     {
         public int PathLength { get; set; }
         public int FinalPath { get; set; }
-        public Tank(string id, double weight, double averageSpeed,int pathLength)
-        :base(id,weight,averageSpeed,30,6)
+        public static int Number = 0;
+
+        public Tank( int pathLength)
+        :base("tank "+(Number+1).ToString(),60000,70,30,6)
         {
+            Number++;
             PathLength = pathLength;
         }
 
@@ -20,9 +23,9 @@ namespace OOP
             return base.Print() + $" | Potrošeno gorivo:{FuelConsumed()}";
         }
 
-        public override int CalculatePath()
+        public override int CalculatePath(int numberOfSoldiers)
         {
-            FinalPath = PathLength * (((int)Math.Ceiling((double)NumberOfSoldiers.Number / Capacity) - 1) * 2 + 1);
+            FinalPath = PathLength * (((int)Math.Ceiling((double)numberOfSoldiers / Capacity) - 1) * 2 + 1);
             return FinalPath;
         }
 
@@ -42,9 +45,9 @@ namespace OOP
 
             FinalPath = FinalPath + distanceToAdd;
         }
-        public int FuelConsumed()
+        public double FuelConsumed()
         {
-            return FinalPath * FuelConsumption;
+            return (double)(FinalPath * FuelConsumption/100);
         }
     }
 }

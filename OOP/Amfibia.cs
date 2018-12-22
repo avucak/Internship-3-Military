@@ -10,10 +10,12 @@ namespace OOP
         public int PathLengthSea { get; set; }
         public int FinalPathLand { get; set; }
         public int FinalPathSea { get; set; }
+        public static int Number = 0;
 
-        public Amfibia(string id, double weight, double averageSpeed,int pathLengthLand, int pathLengthSea)
-            : base(id, weight, averageSpeed, 70, 20)
+        public Amfibia(int pathLengthLand, int pathLengthSea)
+            : base("amfibia "+(Number+1).ToString(), 30000, 47, 70, 20)
         {
+            Number++;
             PathLengthLand = pathLengthLand;
             PathLengthSea = pathLengthSea;
         }
@@ -23,15 +25,15 @@ namespace OOP
             return base.Print() + $" | Potrošeno gorivo:{FuelConsumed()}";
         }
 
-        public override int CalculatePath()
+        public override int CalculatePath(int numberOfSoldiers)
         {
-            FinalPathLand = PathLengthLand * (((int)Math.Ceiling((double)NumberOfSoldiers.Number / Capacity) - 1) * 2 + 1);
+            FinalPathLand = PathLengthLand * (((int)Math.Ceiling((double)numberOfSoldiers / Capacity) - 1) * 2 + 1);
             return FinalPathLand;
         }
 
-        public int CalculatePathSea()
+        public int CalculatePathSea(int numberOfSoldiers)
         {
-            FinalPathSea = PathLengthSea * (((int)Math.Ceiling((double)NumberOfSoldiers.Number / Capacity) - 1) * 2 + 1);
+            FinalPathSea = PathLengthSea * (((int)Math.Ceiling((double)numberOfSoldiers / Capacity) - 1) * 2 + 1);
             return FinalPathSea;
         }
 
@@ -68,9 +70,9 @@ namespace OOP
 
             FinalPathSea = FinalPathSea + distanceToAdd;
         }
-        public int FuelConsumed()
+        public double FuelConsumed()
         {
-            return (FinalPathLand+FinalPathSea) * FuelConsumption;
+            return (double)((FinalPathLand+FinalPathSea) * FuelConsumption/100);
         }
     }
 }
