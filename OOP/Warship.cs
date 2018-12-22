@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOP
 {
-    public class Warship:Vehicle, ISwimmable, IFuelConsummable
+    public class Warship:Vehicle, ISwimmable
     {
         public int PathLength { get; set; }
         public int FinalPath { get; set; }
@@ -44,9 +44,9 @@ namespace OOP
             FinalPath = FinalPath + distanceToAdd;
         }
 
-        public double FuelConsumed()
+        public override double FuelConsumed()
         {
-            return (double)(FinalPath*FuelConsumption/100);
+            return FinalPath * FuelConsumption * 0.01;
         }
     }
 }

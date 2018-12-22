@@ -32,5 +32,10 @@ namespace OOP
         {
             return 0;
         }
+
+        public virtual double FuelConsumed()
+        {
+            return 0;
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOP
 {
-    public class Amfibia:Vehicle, IDriveable,ISwimmable,IFuelConsummable
+    public class Amfibia:Vehicle, IDriveable,ISwimmable
     {
         public int PathLengthLand { get; set; }
         public int PathLengthSea { get; set; }
@@ -70,9 +70,9 @@ namespace OOP
 
             FinalPathSea = FinalPathSea + distanceToAdd;
         }
-        public double FuelConsumed()
+        public override double FuelConsumed()
         {
-            return (double)((FinalPathLand+FinalPathSea) * FuelConsumption/100);
+            return (FinalPathLand + FinalPathSea) * FuelConsumption * 0.01;
         }
     }
 }

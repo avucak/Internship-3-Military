@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOP
 {
-    public class Tank:Vehicle, IDriveable,IFuelConsummable
+    public class Tank:Vehicle, IDriveable
     {
         public int PathLength { get; set; }
         public int FinalPath { get; set; }
@@ -36,6 +36,7 @@ namespace OOP
             {
                 if (random.Next(100) < 30)
                 {
+
                     distanceToAdd += 5;
                     distance += 5;
                 }
@@ -45,9 +46,9 @@ namespace OOP
 
             FinalPath = FinalPath + distanceToAdd;
         }
-        public double FuelConsumed()
+        public override double FuelConsumed()
         {
-            return (double)(FinalPath * FuelConsumption/100);
+            return FinalPath * FuelConsumption * 0.01;
         }
     }
 }
